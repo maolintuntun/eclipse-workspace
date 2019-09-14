@@ -1,0 +1,30 @@
+package subsetsI;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+	public List<String> subSets(String set) {
+		List<String> result = new ArrayList<String>();
+		if(set == null) {
+			return result;
+		}
+		char[] arraySet = set.toCharArray();
+		
+		//record the current subset.
+		StringBuilder sb = new StringBuilder();
+		helper(arraySet, sb, 0, result);
+		return result;
+	}
+	// at each level, determine the character at the position"index" to be picked or not
+	private void helper(char[] set, StringBuilder sb, int index, List<String>result) {
+		//terminate condition:
+		//when we finished determining for all the characters pick or not,we have a complete subset.
+		if(index == set.length) {
+			result.add(sb.toString());
+			return;
+		}
+		// 1. not pick the character at index
+	}
+
+}
