@@ -4,7 +4,7 @@ public class CutRope {
 	public int maxProduct(int length) {
 		   // Write your solution here
 		    int[] M = new int[length+1];      // ²»ÊÇ new int array[length]
-		     //M[0] = 0;
+		     M[0] = 0;
 		     M[1] = 0;
 		     M[2] = 1;
 		      for( int i = 3; i <= length; i ++ ) {
