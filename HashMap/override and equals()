@@ -28,8 +28,20 @@ Q：为什么比较的都是内容了 还是false？
 A：因为lisa是自己定义的类，自己定义的类没有 equals()这个method。这个equals是从 Object继承过来的，他的default implementation比较的是地址，而不是内容。
 
 Q： 想让他相同怎么办？
-A：自己implement一个 equals
+A：自己implement一个 equals，重写这个equals 得到的就是true
 
+-----------------------------以下内容放在 class lisa 里面， 和public lisa（）方法并列------------------------------------
+        @Override
+	public boolean equals(Object other) {
+		if(!(other instanceof lisa)) { // 如果other根本就不是lisa这个类型 就没必要比了
+			return false;
+		}
+		lisa o = (lisa) other; //否则把other cast成lisa 
+		return x == o.x && y == o.y; //because we want to compare 内容, 所以我们比较x和y两个参数是否相等so let the arguments compared.
+		
+	}
+-----------------------------------------------------------------------
+Print：True
 
 
 
