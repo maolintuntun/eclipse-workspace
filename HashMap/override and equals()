@@ -47,5 +47,59 @@ Q: 为什么要Cast？
 A： other作为一个Object是没有.x .y的，只有把他初始化成lisa之后 才有这个属性
 ------------------------------------------------------------------------
 
+关于HashCode没有重写的后果
+
+public class Test2 {
+	public static void main(String[] args) {
+		lisa o1 = new lisa(3,7);
+		lisa o2 = new lisa(3,7);
+		
+	}
+	
+	Map<lisa, Integer> map = new HashMap<>();
+	map.put(o1,1);
+	map.put(o2,3);
+	System.out.println(map.size());
+
+}
+
+Print 1 or 2?? what is the map size?
+Print 2. 
+-----------------
+Q: Why the o2 has the same key as o1,but not overlap不覆盖 the o1?
+A: because HashCode function didn't be override, o1 and o2 on different address.
+
+The process 我们往hashmap里push一个数的过程 是：
+1. 算hash value
+2. 算bucket
+3. iterate the list find if there is same key， if so， 
+
+if 他们的key相同 但是hashcode不同（地址不同），so算出的hash value不同，继而bucket不同，所以找不到o1了。
+如果要达成覆盖，必须自己implement override HashCode
+
+
+public class Test2 {
+	public static void main(String[] args) {
+		lisa o1 = new lisa(3,7);
+		lisa o2 = new lisa(3,7);
+		
+	}
+	
+	Map<lisa, Integer> map = new HashMap<>();
+	map.put(o1,1);
+	map.put(o2,3);
+	System.out.println(map.size());
+	
+	@Override
+	public int hashCode(){
+	
+	return 31*x+y; // kx + y =kx2 + y2
+	
+	}
+
+}
+
+----------
+Print: 1
 
 
