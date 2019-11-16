@@ -1,0 +1,18 @@
+equals and ==
+
+public class Test {
+	public static void main(String[] args) {
+		String x = "abc";
+		String y = new String("abc");
+		System.out.println(x==y);
+	}
+}
+
+Print： false
+== refers to the address of the two object 
+
+----------------------------------------
+System.out.println(x.equals(y));
+
+Print: true
+equals compares the content of the two object
