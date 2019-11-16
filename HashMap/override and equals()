@@ -1,0 +1,35 @@
+Some question and keynote about override
+----------------------------------------------------
+package equals;
+
+public class Test2 {
+	public static void main(String[] args) {
+		lisa o1 = new lisa(3,7);
+		lisa o2 = new lisa(3,7);
+		System.out.println(o1.equals(o2));
+	}
+
+}
+
+class lisa{
+	public int x;
+	public int y;
+	
+	public lisa(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
+--------------------------------
+Print: false.
+
+Q：为什么比较的都是内容了 还是false？ 
+A：因为lisa是自己定义的类，自己定义的类没有 equals()这个method。这个equals是从 Object继承过来的，他的default implementation比较的是地址，而不是内容。
+
+Q： 想让他相同怎么办？
+A：自己implement一个 equals
+
+
+
+
