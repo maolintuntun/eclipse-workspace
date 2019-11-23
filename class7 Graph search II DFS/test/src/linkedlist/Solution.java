@@ -37,17 +37,30 @@ class ListNode {
 
   public class Solution { public ListNode removeEvenNode( ListNode head) {
   
-  ListNode dummy = new ListNode(0); dummy.next = head; ListNode prev = dummy;
+  ListNode dummy = new ListNode(0); 
+  dummy.next = head; 
+  ListNode prev = dummy;
   
   // for record steps and stop condition
   
-  if( head == null || head.next == null) { return null; } if( head.val %2 ==0)
+  if( head == null || head.next == null) 
+  { return null; } 
+  if( head.val %2 ==0)
   { prev.next = prev.next.next;
   
-  }else { prev = prev.next; } while( prev.next != head ) { // if cur is even
-  if( prev.next.val % 2 == 0){ // delete prev.next: jump cur and point the node
-  previous to cur to the one next cur prev.next = prev.next.next; } prev =
+  }else 
+  { prev = prev.next; } 
+  
+  while( prev.next != head ) { // if cur is even
+  if( prev.next.val % 2 == 0){ 
+	  // delete prev.next: jump cur and point the node previous to cur to the one next cur 
+	      prev.next = prev.next.next;
+	  } prev =
+  }
   prev.next;
   
-  } return dummy.next; } }
+  } 
+  return dummy.next;
+  } 
+  }
  
