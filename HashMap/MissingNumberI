@@ -1,0 +1,43 @@
+** Given an integer array of size N - 1, containing all the numbers from 1 to N except one, find the missing number.
+
+Assumptions
+The given array is not null, and N >= 1
+
+Examples
+A = {2, 1, 4}, the missing number is 3
+A = {1, 2, 3}, the missing number is 4
+A = {}, the missing number is 1
+================================================自己写的一开始报错 
+                                                 “This method must return a result of type int” ==============================
+                                                 就开始怀疑是不是for loop里面的return不能结束一个method =========================
+public class MissingNumberI {
+	public int missingI(int[] array) {
+		
+		if(array.length == 0 ) {
+			return 1;
+		}
+		HashSet<Integer> set = new HashSet<Integer>();
+		int length = array.length + 1;
+		for(int i = 0; i < array.length; i++) {
+			set.add(array[i]);
+		}
+		
+		for(int j = 1; j < length; j++) {
+			if(set.contains(j) == false) {
+				
+				return j;
+			}
+		}
+		return length;       // why needs this? 当走到j= length时候， hashset里没有这个值。所以返回为null，不符合int。这个值要最后补上
+		
+	}
+
+}
+
+class Test{
+	public static void main(String[] args) {
+		int[] array = {9,7,6,5,4,3,2,1};
+		MissingNumberI sol = new MissingNumberI();
+		System.out.println(sol.missingI(array));
+	}
+}
